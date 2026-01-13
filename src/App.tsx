@@ -11,8 +11,18 @@ function MyButton({ title, disabled }: ButtonProps) {
 
 export default function App() {
   type Status = "success" | "error" | "loading";
+
+  type RequestState =
+    | { status: "idle" }
+    | { status: "loading" }
+    | { status: "success"; data: any }
+    | { status: "error"; error: Error };
+
   const [status, setStatus] = useState<Status>("loading"); //it is useful since it has a limited set of values
-  const [enabled, setEnabled] = useState<boolean>(false); //not much useful, can use in a traditional way
+  const [enabled, setEnabled] = useState<boolean>(false);
+  const [requestState, setRequestState] = useState<RequestState>({
+    status: "idle",
+  }); //not much useful, can use in a traditional way
   return (
     <div>
       <h1>Hello</h1>

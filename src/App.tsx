@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+interface ButtonProps {
+  title: string;
+  disabled: boolean;
+}
+
+function MyButton({ title, disabled }: ButtonProps) {
+  return <button disabled={disabled}>{title}</button>;
+}
+
+export default function App() {
+  const [enabled, setEnabled] = useState<boolean>(false); //not much useful, can use in a traditional way
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Hello</h1>
+      <MyButton title="I'm Button" disabled={true} />
     </div>
   );
 }
-
-export default App;
